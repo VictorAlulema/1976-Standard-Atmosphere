@@ -36,7 +36,8 @@ class std_atmosphere:
             P  = .0085666 * (228.65 / T) ** (self.K / 2.8)
         elif H < 51:
             T  = 270.65
-            P  = .0010945 * exp( - self.K * (H - 47) / 270.65)
+            P  = .0010945 * exp( - self.K * (H - 47) / 270.65)
+
         elif H < 71:
             T  = 270.65 - 2.8 * (H - 51)
             P  = .00066063 * (270.65 / T) ** ( - self.K / 2.8)
@@ -46,7 +47,6 @@ class std_atmosphere:
         else:
             error = 'z:{} [m] ouf of limits for S.A.'.format(self.z)
             raise Exception(error)
-        R_ratio  = P / (T / 288.15)
         return T , P 
     def temperature(self):
         """Temperature at "z" altitude """
